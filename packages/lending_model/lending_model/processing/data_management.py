@@ -1,9 +1,7 @@
 import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-
-from packages.lending_model.lending_model.config import config
+from ..config import config
 
 
 def load_dataset(file_name):

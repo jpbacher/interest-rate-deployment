@@ -1,9 +1,9 @@
-import pathlib
+from pathlib import Path
 
-from packages import lending_model
+from ....lending_model import lending_model
 
 
-PACKAGE_ROOT = pathlib.Path(lending_model.__file__).parent
+PACKAGE_ROOT = Path(lending_model.__file__).resolve().parent
 TRAINED_MODEL_DIR = PACKAGE_ROOT/'trained_models'
 DATASET_DIR = PACKAGE_ROOT/'datasets'
 
