@@ -1,7 +1,7 @@
-from packages.lending_model.lending_model.predict import make_prediction
-from packages.lending_model.lending_model.processing.data_management import (
+from ..lending_model.processing.data_management import (
     load_dataset, split_dataset
 )
+from ..lending_model.predict import make_prediction
 
 
 def test_make_single_prediction():
