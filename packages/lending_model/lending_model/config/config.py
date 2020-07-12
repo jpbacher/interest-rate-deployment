@@ -43,13 +43,23 @@ FEATURES = [
 ]
 
 # variables to remove '%' in string & convert to numeric data type
-VARS_WITH_PERC_SIGNS = ['int_rate', 'revol_util']
+VARS_WITH_PERC_SIGNS = ['revol_util']
 
 # numerical variables with NA in training set
 NUM_VARS_WITH_NA = [
+    'dti',
+    'revol_util',
+    'mths_since_rcnt_il',
+    'all_util',
+    'avg_cur_bal',
+    'bc_open_to_buy',
+    'mo_sin_old_il_acct',
+    'mths_since_recent_bc',
+    'mths_since_recent_inq',
     'mths_since_last_delinq',
     'il_util',
-    'mths_since_recent_inq'
+    'mths_since_recent_inq',
+    'percent_bc_gt_75'
 ]
 
 NUMERICAL_NA_NOT_ALLOWED = [
