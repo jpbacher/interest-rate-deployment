@@ -11,6 +11,14 @@ def load_dataset(file_name):
     return _data
 
 
+def clean_target_variable(data):
+    """Drop missing target data points, remove percentage signs, &
+    convert to numeric."""
+    data = data.dropna(axis=0, subset=[config.TARGET])
+    data[config.TARGET] = data[config.TARGET].str.replace(r'%', '').astype('float')
+    return data
+
+
 def split_dataset(data):
     X_train, X_val, y_train, y_val = train_test_split(
         data[config.FEATURES], data[config.TARGET], test_size=0.1, random_state=0
