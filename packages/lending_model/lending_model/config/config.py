@@ -42,6 +42,9 @@ FEATURES = [
     'total_il_high_credit_limit'
 ]
 
+# variables to remove '%' in string & convert to numeric data type
+VARS_WITH_PERC_SIGNS = ['int_rate', 'revol_util']
+
 # numerical variables with NA in training set
 NUM_VARS_WITH_NA = [
     'mths_since_last_delinq',
