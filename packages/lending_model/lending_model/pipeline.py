@@ -8,6 +8,10 @@ from config import config
 interest_rate_pipe = Pipeline(
     [
         (
+            'remove_perc_signs',
+            pp.RemovePercentageSigns(features=config.VARS_WITH_PERC_SIGNS),
+        ),
+        (
             'numerical_imputer',
             pp.NumericalImputer(features=config.NUM_VARS_WITH_NA),
         ),
