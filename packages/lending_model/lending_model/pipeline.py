@@ -19,7 +19,7 @@ interest_rate_pipe = Pipeline(
             'random_forest',
             RandomForestRegressor(
                 n_estimators=100,
-                max_depth=18,
+                max_depth=15,
                 max_features=0.9,
                 min_samples_leaf=3,
                 random_state=3,
