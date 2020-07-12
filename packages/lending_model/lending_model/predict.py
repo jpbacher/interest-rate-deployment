@@ -1,7 +1,7 @@
 import pandas as pd
 
-from .processing.data_management import load_pipeline
-from .config import config
+from processing.data_management import load_pipeline
+from config import config
 
 
 pipeline_file_name = 'rf_regression.pkl'
