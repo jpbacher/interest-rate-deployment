@@ -1,8 +1,8 @@
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.pipeline import Pipeline
 
-from .processing import preprocessors as pp
-from .config import config
+from processing import preprocessors as pp
+from config import config
 
 
 interest_rate_pipe = Pipeline(

@@ -1,7 +1,8 @@
 import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
-from ..config import config
+
+from config import config
 
 
 def load_dataset(file_name):
@@ -19,10 +20,9 @@ def split_dataset(data):
 
 def save_pipeline(pipeline_to_persist):
     """Persist the pipeline."""
-    save_file_name = 'lending_model.pkl'
+    save_file_name = 'rf_model_lending.pkl'
     save_path = config.TRAINED_MODEL_DIR/save_file_name
     joblib.dump(pipeline_to_persist, save_path)
-
     print('...saved pipeline')
 
 

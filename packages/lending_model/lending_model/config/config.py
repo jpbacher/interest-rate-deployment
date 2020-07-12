@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from ....lending_model import lending_model
+import lending_model
 
 
 PACKAGE_ROOT = Path(lending_model.__file__).resolve().parent
@@ -9,7 +9,7 @@ DATASET_DIR = PACKAGE_ROOT/'datasets'
 
 # data
 TRAINING_DATA_FILE = "lending_data.csv"
-PIPELINE_NAME = 'rf_regression'
+PIPELINE_NAME = 'rf_lending'
 TARGET = 'int_rate'
 
 # input features
