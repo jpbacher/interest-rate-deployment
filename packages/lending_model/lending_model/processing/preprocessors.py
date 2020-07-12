@@ -9,7 +9,7 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
         else:
             self.features = features
 
-    def fit(self, X, y):
+    def fit(self, X, y=None):
         self.imputer_dict = {}
         for feat in self.features:
             self.imputer_dict[feat] = X[feat].median()
@@ -18,7 +18,7 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
     def transform(self, X):
         X = X.copy()
         for feat in self.features:
-            X[feat].fillna(self.imputer_dict[feat], inplace=True)
+            X[feat] = X[feat].fillna(self.imputer_dict[feat])
         return X
 
 
