@@ -9,7 +9,7 @@ DATASET_DIR = PACKAGE_ROOT/'datasets'
 
 # data
 TRAINING_DATA_FILE = "lending_data.csv"
-PIPELINE_NAME = 'rf_lending'
+PIPELINE_SAVE_FILE = 'rf_lending_model'
 TARGET = 'int_rate'
 
 # input features
