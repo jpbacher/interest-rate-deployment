@@ -21,7 +21,7 @@ def clean_target_variable(data):
 
 def split_dataset(data):
     X_train, X_val, y_train, y_val = train_test_split(
-        data[config.FEATURES], data[config.TARGET], test_size=0.1, random_state=0
+        data[config.FEATURES], data[config.TARGET], test_size=0.1, random_state=12
     )
     return X_train, X_val, y_train, y_val
 
