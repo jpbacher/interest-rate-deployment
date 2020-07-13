@@ -2,7 +2,7 @@ import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
 
-from config import config
+from lending_model.config import config
 
 
 def load_dataset(file_name):
@@ -37,5 +37,5 @@ def save_pipeline(pipeline_to_persist):
 def load_pipeline(file_name):
     """Load a persisted pipeline."""
     file_path = config.TRAINED_MODEL_DIR/file_name
-    saved_pipeline = joblib.load(file_name=file_path)
+    saved_pipeline = joblib.load(file_path)
     return saved_pipeline
