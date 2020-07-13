@@ -1,10 +1,10 @@
 import pandas as pd
 
-from processing.data_management import load_pipeline
-from config import config
+from lending_model.processing.data_management import load_pipeline
+from lending_model.config import config
 
 
-pipeline_file_name = 'rf_regression.pkl'
+pipeline_file_name = 'rf_model_lending.pkl'
 _interest_rate_pipe = load_pipeline(pipeline_file_name)
 
 
