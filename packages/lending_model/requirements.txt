@@ -1,0 +1,7 @@
+# model building
+numpy==1.19
+pandas==1.0.5
+scikit-learn==0.23.1
+
+# testing
+pytest==5.4.3
