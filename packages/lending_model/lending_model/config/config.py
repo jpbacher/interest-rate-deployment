@@ -9,7 +9,6 @@ DATASET_DIR = PACKAGE_ROOT/'datasets'
 
 # data
 TRAINING_DATA_FILE = "lending_data.csv"
-PIPELINE_SAVE_FILE = 'rf_lending_model'
 TARGET = 'int_rate'
 
 # input features
@@ -65,3 +64,6 @@ NUM_VARS_WITH_NA = [
 NUMERICAL_NA_NOT_ALLOWED = [
     feature for feature in FEATURES if feature not in NUM_VARS_WITH_NA
 ]
+
+PIPELINE_NAME = 'rf_lending_model'
+PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output_v'
