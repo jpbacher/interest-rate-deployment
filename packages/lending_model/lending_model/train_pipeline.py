@@ -1,8 +1,14 @@
+import logging
+
+import pipeline
 from config import config
 from processing.data_management import (
     load_dataset, split_dataset, save_pipeline, clean_target_variable
 )
-import pipeline
+from lending_model import __version__ as _version
+
+
+_logger = logging.getLogger(__name__)
 
 
 def run_training():
@@ -15,7 +21,8 @@ def run_training():
     X_train, X_val, y_train, y_val = split_dataset(data)
     print('...fitting model')
     pipeline.interest_rate_pipe.fit(X_train[config.FEATURES], y_train)
-    print('...model fitted & saved')
+
+    _logger.info(f"...saving model version: {_version}")
     save_pipeline(pipeline.interest_rate_pipe)
 
 
