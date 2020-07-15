@@ -19,11 +19,12 @@ def health():
         return 'ok'
 
 
-@prediction_app.route('/version', methods=['GET']):
+@prediction_app.route('/version', methods=['GET'])
 def version():
     if request.method == 'GET':
         return jsonify({'model_version': _version,
                         'api_version': api_version})
+
 
 @prediction_app.route('/v1/predict/lending_rate', methods=['POST'])
 def predict():
