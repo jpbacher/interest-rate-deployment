@@ -3,6 +3,7 @@ from lending_model.predict import make_prediction
 from lending_model import __version__ as _version
 
 from api.config import get_logger
+from api.validation import validate_inputs
 from api import __version__ as api_version
 
 _logger = get_logger(logger_name=__name__)
@@ -29,14 +30,21 @@ def version():
 @prediction_app.route('/v1/predict/lending_rate', methods=['POST'])
 def predict():
     if request.method == 'POST':
+        # extract 'post' data from request body
         json_data = request.get_json()
         _logger.info(f'Inputs: {json_data}')
 
+        # validate input (using marshmallow schema)
+        input_data, errors = validate_inputs(input_json=json_data)
+
+        # model prediction
         result = make_prediction(input_data=json_data)
         _logger.info(f'Outputs: {result}')
 
-        predictions = result.get('predictions')[0]
+        # convert array to a list
+        predictions = result.get('predictions').tolist()
         version = result.get('version')
 
         return jsonify({'predictions': predictions,
-                        'version': version})
+                        'version': version,
+                        'errors': errors})
