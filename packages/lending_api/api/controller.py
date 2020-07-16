@@ -35,16 +35,17 @@ def predict():
         _logger.info(f'Inputs: {json_data}')
 
         # validate input (using marshmallow schema)
-        input_data, errors = validate_inputs(input_json=json_data)
+        input_data, errors = validate_inputs(input_data=json_data)
 
         # model prediction
-        result = make_prediction(input_data=json_data)
+        result = make_prediction(input_data=input_data)
         _logger.info(f'Outputs: {result}')
 
         # convert array to a list
         predictions = result.get('predictions').tolist()
         version = result.get('version')
 
+        # get the response as JSON
         return jsonify({'predictions': predictions,
                         'version': version,
                         'errors': errors})
