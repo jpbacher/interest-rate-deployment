@@ -1,21 +1,22 @@
-version: 2.1
-
-orbs:
-  python: circleci/python@0.2.1
-
+version: 2
 jobs:
-  build-and-test:
-    executor: python/default
+  test_lending_model:
+    working_directory: ~/project
+    docker:
+      image: circleci/python:3.7.7
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
       - run:
-          command: ./manage.py test
-          name: Test
+          name: Running tests
+          command: |
+            virtualenv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r packages/lending_model/requirements.txt
+            py.test --vv packages/lending_model/tests
 
 workflows:
-  main:
+  version: 2
+  test-all:
     jobs:
-      - build-and-test
+      - test_lending_model
