@@ -35,7 +35,7 @@ def test_model_prediction_differential(
         previous_model_predictions, current_model_predictions):
         # convert numpy float to Python float
         previous_value = previous_value.item()
-        current_value current_value.item()
+        current_value = current_value.item()
 
         assert math.isclose(previous_value,
                             current_value,
