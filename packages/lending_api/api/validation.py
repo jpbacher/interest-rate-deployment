@@ -141,7 +141,7 @@ class LendingDataRequestSchema(Schema):
 def validate_inputs(input_data):
     """Check prediction inputs against the schema."""
     # allow passing in a list
-    schema = LendingDataRequestSchema(many=True)
+    schema = LendingDataRequestSchema(strict=True, many=True)
 
     errors = None
     try:
