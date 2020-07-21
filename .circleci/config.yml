@@ -15,48 +15,8 @@ jobs:
             pip install -r packages/lending_model/requirements.txt
             py.test --vv packages/lending_model/tests
 
-  test lending_api:
-    working_directory: ~/project
-    docker:
-      - image: circleci/python:3.7.7
-    steps:
-      - checkout
-      - run:
-          name: Running tests
-          command: |
-            virtualenv venv
-            . venv/bin/activate
-            pip install --upgrade pip
-            pip install -r packages/lending_api/requirements.txt
-            py.test --vv packages/lending_api/tests
-
-  train_and_upload_lending_model:
-    working_directory: ~/project
-    docker:
-      - image: circleci/python:3.7.7
-    steps:
-      - checkout
-      - run:
-          name: Setup env
-          command: |
-            virtualenv venv
-            . venv/bin/activate
-            pip install -r packages/lending_model/requirements.txt
-      - run:
-          name: Publish model
-          command: |
-            . venv/bin/activate
-            chmod +x ./scripts/publish_model.sh
-            PYTHONPATH=./packages/lending_model python3 packages/lending_model/lending_model/train_pipeline.py
-            ./scripts/publish_model.sh ./packages/lending_model/
-workflows:
-  version: 2
-  test-all:
-    jobs:
-      - test_lending_model
-      - test_lending_api
-      - train_and_upload_lending_model
-      - test_lending_api:
-          requires:
-            - train_and_upload_lending_model
-
+ workflows:
+   version: 2
+   test-all:
+     jobs:
+       test_lending_model
